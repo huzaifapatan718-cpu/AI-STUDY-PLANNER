@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>StudyBot AI</title>
+
+<link rel="stylesheet"
+href="style.css">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- LOGIN PAGE -->
+
+<div id="loginPage" class="login-page">
+
+    <div class="login-card">
+
+        <h1>
+            StudyBot AI
+        </h1>
+
+        <p>
+            Login to continue
+        </p>
+
+        <input 
+        type="email"
+        id="username"
+        placeholder="Enter Email">
+
+        <input 
+        type="password"
+        id="password"
+        placeholder="Enter Password">
+
+        <button onclick="loginUser()">
+            Login
+        </button>
+        <p style="margin-top:15px;">
+
+            Don't have an account?
+
+            <a href="#"
+            onclick="showSignup()"
+            style="color:#00ff88;">
+
+                Sign Up
+
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- SIGNUP PAGE -->
+
+<div id="signupPage" class="login-page hidden">
+
+    <div class="login-card">
+
+        <h1>
+            StudyBot AI
+        </h1>
+
+        <p>
+            Create your account
+        </p>
+
+        <input
+        type="text"
+        id="signupName"
+        placeholder="Enter Full Name">
+
+        <input
+        type="email"
+        id="signupEmail"
+        placeholder="Enter Email">
+
+        <input
+        type="password"
+        id="signupPassword"
+        placeholder="Enter Password">
+
+        <button onclick="signupUser()">
+            Sign Up
+        </button>
+
+        <p style="margin-top:15px;">
+
+            Already have an account?
+
+            <a href="#"
+            onclick="showLogin()"
+            style="color:#00ff88;">
+
+                Login
+
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- BACKGROUND -->
+
+<div class="animated-bg">
+
+    <div class="grid"></div>
+
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+
+    <div class="particles">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+</div>
+
+<!-- CONTAINER -->
+
+<div class="container" id="mainApp" 
+style="display:none;">
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-circle"></div>
+
+            <h1>
+                StudyBot
+                <span>AI</span>
+            </h1>
+
+        </div>
+
+        <div class="menu">
+
+            <div class="item active"
+            onclick="showSection('dashboard', this)">
+
+                🏠 Dashboard
+
+            </div>
+
+            <div class="item"
+            onclick="showSection('tasks', this)">
+
+                ✅ Tasks
+
+            </div>
+
+            <div class="item"
+            onclick="showSection('ai', this)">
+
+                🤖 AI Assistant
+
+            </div>
+
+            <div class="item"
+            onclick="showSection('notes', this)">
+
+                📝 AI Notes
+
+            </div>
+
+            <div class="item"
+            onclick="showSection('doubt', this)">
+
+                ❓ AI Doubt Solver
+
+            </div>
+
+            <div class="item"
+            onclick="showSection('timer', this)">
+
+                ⏱ Focus Timer
+
+            </div>
+
+            <div class="item"
+            onclick="showSection('analytics', this)">
+
+                📊 Progress Analytics
+
+            </div>
+
+            <div class="item"
+onclick="showSection('schedule', this)">
+
+    📅 Schedule
+
+</div>
+
+        </div>
+
+        <div class="sidebar-card">
+
+            <h3>
+                ⭐ Stay Focused
+            </h3>
+
+            <p>
+                Every day is a step toward your goals.
+                Keep learning and stay consistent.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+
+    <div class="main-content">
+
+      <!-- DASHBOARD -->
+
+<section id="dashboard" class="section">
+
+    <!-- HERO -->
+
+    <div class="hero">
+
+        <!-- LEFT -->
+
+        <div class="hero-left">
+
+            <small>
+                Welcome back,
+                <span>Huzaifa 👋</span>
+            </small>
+
+            <h1>
+                Your AI
+                <br>
+                <span>Study Planner</span>
+            </h1>
+
+            <p>
+                Plan smarter, study better and boost productivity using AI.
+            </p>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="hero-right">
+
+            <div class="robot-glow"></div>
+
+            <div class="circle-animation"></div>
+
+            <img src="robot.jpeg"
+            class="robot-img">
+
+            <div class="ai-card">
+
+                <h2>
+                    AI Powered
+                </h2>
+
+                <p>
+                    Analyzing your study patterns...
+                </p>
+
+                <div class="ai-line">
+
+                    <div class="ai-line-fill"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+</section>
+           <!-- TASKS -->
+
+        <section id="tasks"
+        class="section hidden">
+
+            <div class="card">
+
+                <h2>
+                    Today's Tasks
+                </h2>
+
+                <div class="task-input-box">
+
+                    <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="Enter study task...">
+
+                    <button id="addTaskBtn">
+                        Add Task
+                    </button>
+
+                </div>
+
+                <div id="taskList"></div>
+
+            </div>
+
+        </section>
+
+        <!-- AI -->
+
+        <section id="ai"
+        class="section hidden">
+
+            <h2>AI Study Assistant</h2>
+
+            <div class="ai-tools">
+
+                <input
+                type="text"
+                id="aiPrompt"
+                placeholder="Example: Learn JavaScript in 30 days"/>
+
+                <button onclick="generatePlan()">
+                    Ask AI
+                </button>
+
+                <button id="voiceBtn">
+                    🎤
+                </button>
+
+                <button onclick="stopVoice()"
+                class="secondary-btn">
+
+                    🛑 Stop Voice
+
+                </button>
+
+            </div>
+
+            <div id="aiResult"
+            class="ai-result"></div>
+
+        </section>
+
+        <!-- NOTES -->
+
+        <section id="notes"
+        class="section hidden">
+
+            <h1>AI Notes Generator</h1>
+
+            <div class="ai-box">
+
+                <input
+                type="text"
+                id="notesPrompt"
+                placeholder="Example: Notes on JavaScript DOM">
+
+                <button onclick="generateNotes()">
+                    Generate Notes
+                </button>
+
+            </div>
+
+            <div id="notesResult"
+            class="ai-result"></div>
+
+        </section>
+
+        <!-- DOUBT --> 
+
+        <section id="doubt"
+        class="section hidden">
+
+            <h1>AI Doubt Solver</h1>
+
+            <div class="ai-box">
+
+                <input
+                type="text"
+                id="doubtPrompt"
+                placeholder="Ask any doubt...">
+
+                <button onclick="solveDoubt()">
+                    Solve Doubt
+                </button>
+
+            </div>
+
+            <div id="doubtResult"
+            class="ai-result"></div>
+
+        </section>
+
+        <!-- TIMER -->
+
+        <section id="timer"
+        class="section hidden">
+
+            <div class="card timer-card">
+
+                <h2>
+                    Pomodoro Focus Timer
+                </h2>
+
+                <div id="timerText">
+                    25:00
+                </div>
+
+                <p id="timerStatus">
+                    Focus Session
+                </p>
+
+                <div class="timer-buttons">
+
+                    <button id="startBtn">
+                        Start
+                    </button>
+
+                    <button id="pauseBtn">
+                        Pause
+                    </button>
+
+                    <button id="resetBtn">
+                        Reset
+                    </button>
+
+                </div>
+
+                <!-- MUSIC -->
+
+                <div class="music-box">
+
+                    <h3>
+                        Ambient Sounds
+                    </h3>
+
+                    <select id="soundSelect">
+
+                        <option value="">
+                            Select Sound
+                        </option>
+
+                        <option value="rain.mp3">
+                            🌧 Rain
+                        </option>
+
+                        <option value="forest.mp3">
+                            🌲 Forest
+                        </option>
+
+                        <option value="lofi.mp3">
+                            🎵 Lofi Music
+                        </option>
+
+                    </select>
+
+                    <audio id="ambientAudio"
+                    loop></audio>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ANALYTICS -->
+
+<section id="analytics"
+class="section hidden">
+
+    <h1>
+        📊 Progress Analytics
+    </h1>
+
+    <div class="analytics-grid">
+
+        <div class="analytics-card">
+
+            <h2>
+                Total Tasks
+            </h2>
+
+            <p id="totalTasks">
+                0
+            </p>
+
+        </div>
+
+        <div class="analytics-card">
+
+            <h2>
+                Completed Tasks
+            </h2>
+
+            <p id="completedTasks">
+                0
+            </p>
+
+        </div>
+
+        <div class="analytics-card">
+
+            <h2>
+                Progress
+            </h2>
+
+            <p id="progressPercent">
+                0%
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="progress-bar-box">
+
+        <div id="progressBar"></div>
+
+    </div>
+
+    <h2 style="margin-top:40px;">
+
+        📅 Daily Progress History
+
+    </h2>
+
+    <div class="card"
+    style="margin-top:20px; overflow-x:auto;">
+
+        <table style="width:100%; border-collapse:collapse;">
+
+            <thead>
+
+                <tr>
+
+                    <th style="padding:15px;">
+                        Date
+                    </th>
+
+                    <th style="padding:15px;">
+                        Tasks
+                    </th>
+
+                    <th style="padding:15px;">
+                        Progress
+                    </th>
+
+                    <th style="padding:15px;">
+                        Study Time
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="historyBody">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+   
+   <!-- SCHEDULE -->
+
+<section id="schedule"
+class="section hidden">
+
+    <h1>
+        📅 Exam Schedule Generator
+    </h1>
+
+    <input
+    type="text"
+    id="subjectInput"
+    placeholder="Enter Subject">
+
+    <input
+    type="date"
+    id="examDateInput">
+
+    <input
+    type="number"
+    id="hoursInput"
+    placeholder="Daily Study Hours">
+
+    <button onclick="generateSchedule()">
+
+        Generate Schedule
+
+    </button>
+
+    <div id="scheduleResult"
+    class="ai-result">
+
+    </div>
+
+</section>
+
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
